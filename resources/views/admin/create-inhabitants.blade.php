@@ -23,7 +23,7 @@
 
 
         </div>
-        <a class="btn btn-info" href="{{$back}}">Back to list</a>
+        <a class="btn btn-info" href="{{$back}}">Atgal į sąrašą</a>
         {{Form::submit(('Save'), ['class' => 'btn btn-success']) }}
     @else
         <div>{{$form}}</div>
@@ -43,7 +43,7 @@
             {{Form::label('gatve', 'Gatvė')}}
             {{Form::select('gatve', $gatve)}}
         </div>
-        <a class="btn btn-info" href="{{$back}}">Back to list</a>
+        <a class="btn btn-info" href="{{$back}}">Atgal į sąrašą</a>
         {{Form::submit(('Save'), ['class' => 'btn btn-success']) }}
     @endif
 

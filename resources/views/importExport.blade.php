@@ -23,7 +23,7 @@
     <a href="{{URL::to('downloadExcel/csv')}}"><button class="btn bnt-success">Download Excel csv</button></a>
 <br>
     <br>
-    <a class="btn btn-info" href="{{$back}}">Back to list</a>
+    <a class="btn btn-info" href="{{$back}}">Atgal į sąrašą</a>
 
 
 
