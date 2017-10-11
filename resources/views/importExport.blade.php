@@ -1,18 +1,18 @@
-@extends('admin.core')
+@extends('layouts.app')
 
 
         <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Import files</title>
+    <title>Vilniaus gyventojai</title>
 </head>
 <body>
 
 <nav class="navbar navbar-default">
     <div class="container-fluid">
         <div class="navbar-header">
-            <a class="navbar-brand" href="#"> Import file</a>
+            <a class="navbar-brand" href="#"> Atsiųsti gyventojų sąrašą </a>
         </div>
     </div>
 </nav>
@@ -26,11 +26,11 @@
 
 
 
-<form action="{{URL::to('importExcel')}}" method="post" enctype="multipart/form-data">
-    {{ csrf_field() }}
-    <input type="file" name="import_file"/>
-   <button class="btn btn-primary">Import</button>
-</form>
+{{--<form action="{{URL::to('importExcel')}}" method="post" enctype="multipart/form-data">--}}
+    {{--{{ csrf_field() }}--}}
+    {{--<input type="file" name="import_file"/>--}}
+   {{--<button class="btn btn-primary">Import</button>--}}
+{{--</form>--}}
 </div>
 
 {{--{!! Form::open(['action'=>'MaatwebsiteController@importExcel']) !!}--}}
