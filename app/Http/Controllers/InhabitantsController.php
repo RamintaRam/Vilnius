@@ -27,7 +27,7 @@ class InhabitantsController extends Controller {
         $config['new'] = 'app.inhabitants.create';
         $config['edit'] = 'app.inhabitants.edit';
         $config['delete'] = 'app.inhabitants.delete';
-        $config['search'] = 'app.search.index';
+//        $config['search'] = 'app.search.index';
 //        $config['file'] = 'app.file.index';
 
 

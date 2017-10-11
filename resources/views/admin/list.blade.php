@@ -9,8 +9,8 @@
                 <div>
                     <a class="btn btn-success btn-sm" style="text-align: left"
                        href="{{route($new)}}">{{trans('app.createNew')}}</a>
-                    <a class="btn btn-primary btn-sm search"
-                       href="{{route($search)}}">{{trans('app.search')}}</a>
+                    {{--<a class="btn btn-primary btn-sm search"--}}
+                       {{--href="{{route($search)}}">{{trans('app.search')}}</a>--}}
                 </div>
             @endif
 
@@ -39,6 +39,7 @@
                                         <td>{{($value['name'])}}</td>
                                             @elseif($key == 'valstybe')
                                             <td>{{($value['name'])}}</td>
+
                                         @endif
                                     @endforeach
                                     <td>
