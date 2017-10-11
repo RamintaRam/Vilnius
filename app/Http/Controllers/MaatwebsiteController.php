@@ -33,8 +33,8 @@ class MaatwebsiteController extends Controller
     public function downloadExcel($type)
     {
         $data = Inhabitants::get()->toArray();
-        return Excel::create('ingabitants', function ($excel) use ($data) {
-            $excel->sheet('mySgeet', function ($sheet) use ($data) {
+        return Excel::create('gyventojai', function ($excel) use ($data) {
+            $excel->sheet('mySheet', function ($sheet) use ($data) {
                 $sheet->fromArray($data);
             });
         })->download($type);
