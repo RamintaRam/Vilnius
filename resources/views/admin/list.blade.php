@@ -4,17 +4,17 @@
 
     <div class="container">
         <div class="row">
-            <h4>{{$title}}</h4>
+            <h4 style="text-align: center; font-weight: 600; font-size: 24px">{{$title}}</h4>
             @if(isset($new))
-                <div><a class="btn btn-success btn-sm" href="{{route($new)}}">{{trans('app.createNew')}}</a></div><br>
+                <div>
+                    <a class="btn btn-success btn-sm" style="text-align: left"
+                       href="{{route($new)}}">{{trans('app.createNew')}}</a>
+                    <a class="btn btn-primary btn-sm search"
+                       href="{{route($search)}}">{{trans('app.search')}}</a>
+                </div>
             @endif
 
             <div class="col-md-12">
-
-
-                {{--@if(isset($new))--}}
-                {{--<div><a class="btn btn-success btn-sm" href="{{route($new)}}">{{trans('app.new')}}</a></div><br>--}}
-                {{--@endif--}}
 
                 <div class="table-responsive">
                     @if(sizeof($list)>0)
@@ -23,11 +23,11 @@
                             <tr>
                                 @foreach($list[0] as $key => $value)
 
-                                    <th>{{$key}}</th>
+                                    <th>{{trans('app.'.$key)}}</th>
 
                                 @endforeach
-                                <th>Edit</th>
-                                <th>Delete</th>
+                                <th>Keisti</th>
+                                <th>Trinti</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -35,32 +35,40 @@
 
                                 <tr id="{{$record['id']}}">
                                     @foreach($record as $key => $value)
-                                        <td>{{$value}}</td>
+                                        @if($key == 'metai')
+                                        <td>{{($value['name'])}}</td>
+                                            @elseif($key == 'valstybe')
+                                            <td>{{($value['name'])}}</td>
+                                        @endif
                                     @endforeach
                                     <td>
                                         <a href="{{ route($edit,$record['id']) }}">
-                                            <button type="button" class="btn btn-primary">Edit</button>
+                                            <button type="button" class="btn btn-primary">Keisti</button>
                                         </a>
                                     </td>
+
+
                                     <td>
-                                        <button onclick="deleteItem( '{{ route($delete, $record['id']) }}' )"
-                                                class="btn btn-danger">Delete
-                                        </button>
+                                        <form action="{{ route($delete, ['id'=>$record['id']]) }}" method="POST">
+                                            {{ csrf_field() }}
+                                            <input type="hidden" name="_method" value="DELETE">
+                                            <input type="submit" value='Ištrinti' class="btn btn-danger">
+                                        </form>
                                     </td>
                                 </tr>
                             @endforeach
                             </tbody>
                         </table>
+
                     @else
                         <h2>Data not find</h2>
                     @endif
                 </div>
-
-
                 @endsection
 
                 @section('scripts')
                     <script>
+
                         $.ajaxSetup({
                             headers: {
                                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -79,5 +87,7 @@
                                 }
                             });
                         }
+
+
                     </script>
 @endsection

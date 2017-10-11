@@ -17,14 +17,14 @@
 
 Auth::routes();
 
-Route::get('/', ['as' => 'app.search.index', 'uses' => 'SearchFlightController@index']);
+Route::get('/', ['as' => 'app.inhabitants.index', 'uses' => 'InhabitantsController@index']);
 
 //
 //return;
 
-//Auth::routes();
+Auth::routes();
 //
-Route::get('/home', 'HomeController@index')->name('home');
+//Route::get('/home', 'HomeController@index')->name('home');
 
 //
 //Route::get('/create', function () {
@@ -32,60 +32,138 @@ Route::get('/home', 'HomeController@index')->name('home');
 //});
 
 Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'auth']], function () {
-    Route::get('/', ['as' => 'app.flights.index', 'uses' => 'FLYCountriesController@index']);
+    Route::get('/', ['as' => 'app.inhabitants.index', 'uses' => 'InhabitantsController@index']);
 
 
 
-    Route::group(['prefix' => 'airlines'], function () {
+    Route::group(['prefix' => 'gimimo-metai'], function () {
 
-        Route::get('/', ['as' => 'app.airlines.index', 'uses' => 'FLYAirlinesController@index']);
-        Route::get('/create', ['as' => 'app.airlines.create', 'uses' => 'FLYAirlinesController@create']);
-        Route::post('/create', ['uses' => 'FLYAirlinesController@store']);
+        Route::get('/', ['as' => 'app.year.index', 'uses' => 'YearOfBirthController@index']);
+        Route::get('/create', ['as' => 'app.year.create', 'uses' => 'YearOfBirthController@create']);
+        Route::post('/create', ['uses' => 'YearOfBirthController@store']);
 
         Route::group(['prefix' => '{id}'], function () {
-//            Route::get('/',['as' => 'app.airlines.show', 'uses' => 'FLYAirlinesController@show']);
-            Route::get('/edit', ['as' => 'app.airlines.edit', 'uses' => 'FLYAirlinesController@edit']);
-            Route::post('/edit', ['uses' => 'FLYAirlinesController@update']);
-            Route::delete('/delete', ['as' => 'app.airlines.delete', 'uses' => 'FLYAirlinesController@destroy']);
+//            Route::get('/',['as' => 'app.year.show', 'uses' => 'YearOfBirthController@show']);
+            Route::get('/edit', ['as' => 'app.year.edit', 'uses' => 'YearOfBirthController@edit']);
+            Route::post('/edit', ['uses' => 'YearOfBirthController@update']);
+            Route::delete('/delete', ['as' => 'app.year.delete', 'uses' => 'YearOfBirthController@destroy']);
         });
     });
 
 
-    Route::group(['prefix' => 'airports'], function () {
-        Route::get('/', ['as' => 'app.airports.index', 'uses' => 'FLYAirportsController@index']);
-        Route::get('/create', ['as' => 'app.airports.create', 'uses' => 'FLYAirportsController@create']);
-        Route::post('/create', ['uses' => 'FLYAirportsController@store']);
+    Route::group(['prefix' => 'inhabitants'], function () {
+       Route::get('/', ['as' => 'app.inhabitants.index', 'uses' => 'InhabitantsController@index']);
+      Route::get('/create', ['as' => 'app.inhabitants.create', 'uses' => 'InhabitantsController@create']);
+     Route::post('/create', ['uses' => 'InhabitantsController@store']);
         Route::group(['prefix' => '{id}'], function () {
-//            Route::get('/',['as' => 'app.airlines.show', 'uses' => 'FLYAirportsController@show']);
-            Route::get('/edit', ['as' => 'app.airports.edit', 'uses' => 'FLYAirportsController@edit']);
-            Route::post('/edit', ['uses' => 'FLYAirportsController@update']);
-            Route::delete('/delete', ['as' => 'app.airports.delete', 'uses' => 'FLYAirportsController@destroy']);
+            Route::get('/',['as' => 'app.inhabitants.show', 'uses' => 'InhabitantsController@show']);
+            Route::get('/edit', ['as' => 'app.inhabitants.edit', 'uses' => 'InhabitantsController@edit']);
+            Route::post('/edit', ['uses' => 'InhabitantsController@update']);
+            Route::delete('/delete', ['as' => 'app.inhabitants.delete', 'uses' => 'InhabitantsController@destroy']);
         });
     });
 
 
-    Route::group(['prefix' => 'flights'], function () {
-        Route::get('/', ['as' => 'app.flights.index', 'uses' => 'FLYFlightsController@index']);
-        Route::get('/create', ['as' => 'app.flights.create', 'uses' => 'FLYFlightsController@create']);
-        Route::post('/create', ['uses' => 'FLYFlightsController@store']);
+    Route::group(['prefix' => 'gimimo-salis'], function () {
+
+        Route::get('/', ['as' => 'app.country.index', 'uses' => 'CountryOfBirthController@index']);
+        Route::get('/create', ['as' => 'app.country.create', 'uses' => 'CountryOfBirthController@create']);
+        Route::post('/create', ['uses' => 'CountryOfBirthController@store']);
+
         Route::group(['prefix' => '{id}'], function () {
-//            Route::get('/',['as' => 'app.flights.show', 'uses' => 'FLYFlightsController@show']);
-            Route::get('/edit', ['as' => 'app.flights.edit', 'uses' => 'FLYFlightsController@edit']);
-            Route::post('/edit', ['uses' => 'FLYFlightsController@update']);
-            Route::delete('/delete', ['as' => 'app.flights.delete', 'uses' => 'FLYFlightsController@destroy']);
+//            Route::get('/',['as' => 'app.country.show', 'uses' => 'CountryOfBirthController@show']);
+            Route::get('/edit', ['as' => 'app.country.edit', 'uses' => 'CountryOfBirthController@edit']);
+            Route::post('/edit', ['uses' => 'CountryOfBirthController@update']);
+            Route::delete('/delete', ['as' => 'app.country.delete', 'uses' => 'CountryOfBirthController@destroy']);
         });
     });
 
-    Route::group(['prefix' => 'countries'], function () {
-        Route::get('/', ['as' => 'app.countries.index', 'uses' => 'FLYCountriesController@index']);
-        Route::get('/create', ['as' => 'app.countries.create', 'uses' => 'FLYCountriesController@create']);
-        Route::post('/create', ['uses' => 'FLYCountriesController@store']);
+    Route::group(['prefix' => 'seimine-padetis'], function () {
+
+        Route::get('/', ['as' => 'app.family.index', 'uses' => 'FamilyStatusController@index']);
+        Route::get('/create', ['as' => 'app.family.create', 'uses' => 'FamilyStatusController@create']);
+        Route::post('/create', ['uses' => 'FamilyStatusController@store']);
+
         Route::group(['prefix' => '{id}'], function () {
-//            Route::get('/',['as' => 'app.countries.show', 'uses' => 'FLYCountriesController@show']);
-            Route::get('/edit', ['as' => 'app.countries.edit', 'uses' => 'FLYCountriesController@edit']);
-            Route::post('/edit', ['uses' => 'FLYCountriesController@update']);
-            Route::delete('/delete', ['as' => 'app.countries.delete', 'uses' => 'FLYCountriesController@destroy']);
+//            Route::get('/',['as' => 'app.family.show', 'uses' => 'FamilyStatusController@show']);
+            Route::get('/edit', ['as' => 'app.family.edit', 'uses' => 'FamilyStatusController@edit']);
+            Route::post('/edit', ['uses' => 'FamilyStatusController@update']);
+            Route::delete('/delete', ['as' => 'app.family.delete', 'uses' => 'FamilyStatusController@destroy']);
         });
     });
+
+    Route::group(['prefix' => 'lytis'], function () {
+
+        Route::get('/', ['as' => 'app.gender.index', 'uses' => 'GenderController@index']);
+        Route::get('/create', ['as' => 'app.gender.create', 'uses' => 'GenderController@create']);
+        Route::post('/create', ['uses' => 'GenderController@store']);
+
+        Route::group(['prefix' => '{id}'], function () {
+//            Route::get('/',['as' => 'app.gender.show', 'uses' => 'GenderController@show']);
+            Route::get('/edit', ['as' => 'app.gender.edit', 'uses' => 'GenderController@edit']);
+            Route::post('/edit', ['uses' => 'GenderController@update']);
+            Route::delete('/delete', ['as' => 'app.gender.delete', 'uses' => 'GenderController@destroy']);
+        });
+    });
+
+    Route::group(['prefix' => 'vaiku-skaicius'], function () {
+
+        Route::get('/', ['as' => 'app.kids.index', 'uses' => 'NumberOfKidsController@index']);
+        Route::get('/create', ['as' => 'app.kids.create', 'uses' => 'NumberOfKidsController@create']);
+        Route::post('/create', ['uses' => 'NumberOfKidsController@store']);
+
+        Route::group(['prefix' => '{id}'], function () {
+//            Route::get('/',['as' => 'app.kids.show', 'uses' => 'NumberOfKidsController@show']);
+            Route::get('/edit', ['as' => 'app.kids.edit', 'uses' => 'NumberOfKidsController@edit']);
+            Route::post('/edit', ['uses' => 'NumberOfKidsController@update']);
+            Route::delete('/delete', ['as' => 'app.kids.delete', 'uses' => 'NumberOfKidsController@destroy']);
+        });
+    });
+
+    Route::group(['prefix' => 'gatves'], function () {
+
+        Route::get('/', ['as' => 'app.street.index', 'uses' => 'StreetController@index']);
+        Route::get('/create', ['as' => 'app.street.create', 'uses' => 'StreetController@create']);
+        Route::post('/create', ['uses' => 'StreetController@store']);
+
+        Route::group(['prefix' => '{id}'], function () {
+//            Route::get('/',['as' => 'app.street.show', 'uses' => 'StreetController@show']);
+            Route::get('/edit', ['as' => 'app.street.edit', 'uses' => 'StreetController@edit']);
+            Route::post('/edit', ['uses' => 'StreetController@update']);
+            Route::delete('/delete', ['as' => 'app.street.delete', 'uses' => 'StreetController@destroy']);
+        });
+    });
+
+
+    Route::group(['prefix' => 'seniunijos'], function () {
+
+        Route::get('/', ['as' => 'app.ward.index', 'uses' => 'WardController@index']);
+        Route::get('/create', ['as' => 'app.ward.create', 'uses' => 'WardController@create']);
+        Route::post('/create', ['uses' => 'WardController@store']);
+
+        Route::group(['prefix' => '{id}'], function () {
+//            Route::get('/',['as' => 'app.ward.show', 'uses' => 'WardController@show']);
+            Route::get('/edit', ['as' => 'app.ward.edit', 'uses' => 'WardController@edit']);
+            Route::post('/edit', ['uses' => 'WardController@update']);
+            Route::delete('/delete', ['as' => 'app.ward.delete', 'uses' => 'WardController@destroy']);
+        });
+
+        Route::get('/search', ['as' => 'app.search.index', 'uses' => 'InhabitantsSearchController@index']);
+    });
+
+//    Route::group(['prefix' => 'failai'], function () {
+//
+//        Route::get('importExport', 'MaatwebsiteController@importExport');
+//        Route::get('downloadExcel/{type}', 'MaatwebsiteController@downloadExcel');
+//        Route::get('importExcel', 'MaatwebsiteController@importExcel');
+//        Route::post('importExcel', 'MaatwebsiteController@importExcel');
+//        });
+
 
 });
+Route::get('importExport', 'MaatwebsiteController@importExport');
+Route::get('downloadExcel/{type}', 'MaatwebsiteController@downloadExcel');
+Route::get('importExcel', 'MaatwebsiteController@importExcel');
+Route::post('importExcel', 'MaatwebsiteController@importExcel');
+
+Route::get('/search', ['as' => 'app.search.index', 'uses' => 'InhabitantsSearchController@index']);
