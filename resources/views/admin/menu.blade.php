@@ -10,6 +10,7 @@
                         <a href="{{route('app.year.index')}}" class="btn btn-secondary btn btn-block" style="border: 1px solid #d3e0e9; color: #777">Gimimo metai</a>
                         <a href="{{route('app.country.index')}}" class="btn btn-secondary btn btn-block" style="border: 1px solid #d3e0e9; color: #777">Gimimo valstybė</a>
                         <a href="{{route('app.family.index')}}" class="btn btn-secondary btn btn-block" style="border: 1px solid #d3e0e9; color: #777">Šeimos padėtis</a>
+                        <a href="{{route('app.search.index')}}" class="btn btn-secondary btn btn-block" style="border: 1px solid #d3e0e9; color: #777">Ieškoti gyventojų</a>
 
                     </div>
                     <div style="float: left">
@@ -18,6 +19,7 @@
                         <a href="{{route('app.ward.index')}}" class="btn btn-secondary btn btn-block" style="border: 1px solid #d3e0e9; color: #777">Seniūnijos</a>
                         <a href="{{route('app.kids.index')}}" class="btn btn-secondary btn btn-block" style="border: 1px solid #d3e0e9; color: #777">Vaikų skaičius</a>
                         <a href="{{route('app.street.index')}}" class="btn btn-secondary btn btn-block" style="border: 1px solid #d3e0e9; color: #777">Gatvės</a>
+                        <a href="{{route('app.files.importExport')}}" class="btn btn-secondary btn btn-block" style="border: 1px solid #d3e0e9; color: #777">Atsisiųsti gyventojų sąrašą</a>
                     </div>
                 </div>
             </div>
