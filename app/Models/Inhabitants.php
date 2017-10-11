@@ -36,9 +36,9 @@ class Inhabitants extends Model
     }
 
 
-    protected $with = ['metai','valstybe'];
+    protected $with = ['metai','valstybe', 'lytis', 'seima', 'vaikai', 'seniunija', 'gatve'];
 
-    protected $hidden = ['created_at', 'deleted_at', 'count', 'updated_at', 'gimimo'];
+//    protected $hidden = ['created_at', 'deleted_at', 'count', 'updated_at', 'gimimo'];
 
 
     public function metai()
@@ -50,6 +50,32 @@ class Inhabitants extends Model
     {
         return $this->hasOne(CountryOfBirth::class, 'id', 'gimimo_valstybe');
     }
+
+    public function lytis()
+    {
+        return $this->hasOne(Gender::class, 'id', 'lytis');
+    }
+
+    public function seima()
+    {
+        return $this->hasOne(FamilyStatus::class, 'id', 'seimos_padetis');
+    }
+
+    public function vaikai()
+    {
+        return $this->hasOne(NumberOfKids::class, 'id', 'vaiku_skaicius');
+    }
+
+    public function seniunija()
+    {
+        return $this->hasOne(Ward::class, 'id', 'seniunija');
+    }
+    public function gatve()
+    {
+        return $this->hasOne(Street::class, 'id', 'gatve');
+    }
+
+
 
 
 

@@ -23,6 +23,7 @@ class YearOfBirthController extends Controller {
         $config['edit'] = 'app.year.edit';
         $config['delete'] = 'app.year.delete';
         $config['search'] = 'app.search.index';
+        $config['ignore'] = ['created_at', 'updated_at', 'deleted_at', 'id', 'count', 'seimos_padetis', 'gimimo_metai', 'gimimo_valstybe', 'vaiku_skaicius' ];
 
 
         return view('admin.list', $config);

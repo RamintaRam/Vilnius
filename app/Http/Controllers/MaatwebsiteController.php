@@ -20,7 +20,8 @@ class MaatwebsiteController extends Controller
      */
     public function importExport()
     {
-        return view('importExport');
+        $config['back'] = route('app.inhabitants.index');
+        return view('importExport', $config);
     }
 
     /**

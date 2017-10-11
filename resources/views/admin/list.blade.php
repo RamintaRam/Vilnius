@@ -10,7 +10,7 @@
                     <a class="btn btn-success btn-sm" style="text-align: left"
                        href="{{route($new)}}">{{trans('app.createNew')}}</a>
                     {{--<a class="btn btn-primary btn-sm search"--}}
-                       {{--href="{{route($search)}}">{{trans('app.search')}}</a>--}}
+                    {{--href="{{route($search)}}">{{trans('app.search')}}</a>--}}
                 </div>
             @endif
 
@@ -22,8 +22,9 @@
                             <thead>
                             <tr>
                                 @foreach($list[0] as $key => $value)
-
-                                    <th>{{trans('app.'.$key)}}</th>
+                                    @if(!in_array($key, $ignore))
+                                        <th>{{ucfirst($key)}}</th>
+                                    @endif
 
                                 @endforeach
                                 <th>Keisti</th>
@@ -35,11 +36,31 @@
 
                                 <tr id="{{$record['id']}}">
                                     @foreach($record as $key => $value)
-                                        @if($key == 'metai')
-                                        <td>{{($value['name'])}}</td>
-                                            @elseif($key == 'valstybe')
-                                            <td>{{($value['name'])}}</td>
+                                        @if(!in_array($key, $ignore))
+                                            @if($key == 'metai')
+                                                <td>{{($value['name'])}}</td>
 
+                                            @elseif($key == 'valstybe')
+                                                <td>{{($value['name'])}}</td>
+
+                                            @elseif($key == 'lytis')
+                                                <td>{{($value['name'])}}</td>
+
+                                            @elseif($key == 'seima')
+                                                <td>{{($value['name'])}}</td>
+
+                                            @elseif($key == 'vaikai')
+                                                <td>{{($value['name'])}}</td>
+
+                                            @elseif($key == 'seniunija')
+                                                <td>{{($value['name'])}}</td>
+
+                                            @elseif($key == 'gatve')
+                                                <td>{{($value['name'])}}</td>
+
+                                            @else
+                                                <td>{{($value)}}</td>
+                                            @endif
                                         @endif
                                     @endforeach
                                     <td>

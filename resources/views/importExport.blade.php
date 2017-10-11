@@ -21,8 +21,9 @@
     <a href="{{URL::to('downloadExcel/xls')}}"><button class="btn bnt-success">Download Excel xls</button></a>
     <a href="{{URL::to('downloadExcel/xlsx')}}"><button class="btn bnt-success">Download Excel xlsx</button></a>
     <a href="{{URL::to('downloadExcel/csv')}}"><button class="btn bnt-success">Download Excel csv</button></a>
-
-
+<br>
+    <br>
+    <a class="btn btn-info" href="{{$back}}">Back to list</a>
 
 
 

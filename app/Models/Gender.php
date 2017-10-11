@@ -17,6 +17,7 @@ class Gender extends Model
     protected $fillable = ['id', 'name'];
     protected $hidden = ['created_at', 'deleted_at', 'count', 'updated_at'];
 
+
     protected static function boot() {
         parent::boot();
 
@@ -31,4 +32,6 @@ class Gender extends Model
 
 
     }
+
+
 }
