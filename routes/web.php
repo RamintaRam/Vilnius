@@ -147,8 +147,11 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'auth']], function (
             Route::post('/edit', ['uses' => 'WardController@update']);
             Route::delete('/delete', ['as' => 'app.ward.delete', 'uses' => 'WardController@destroy']);
         });
+    });
 
-        Route::get('/search', ['as' => 'app.search.index', 'uses' => 'InhabitantsSearchController@index']);
+
+    Route::group(['prefix' => 'paieska'], function () {
+        Route::get('/', ['as' => 'app.search.index', 'uses' => 'InhabitantsSearchController@index']);
     });
 
 //    Route::group(['prefix' => 'failai'], function () {
@@ -161,9 +164,9 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'auth']], function (
 
 
 });
-Route::get('importExport', 'MaatwebsiteController@importExport');
+Route::get('/importExport', ['as' => 'app.files.importExport', 'uses' =>'MaatwebsiteController@importExport']);
 Route::get('downloadExcel/{type}', 'MaatwebsiteController@downloadExcel');
 Route::get('importExcel', 'MaatwebsiteController@importExcel');
 Route::post('importExcel', 'MaatwebsiteController@importExcel');
 
-Route::get('/search', ['as' => 'app.search.index', 'uses' => 'InhabitantsSearchController@index']);
+//Route::get('/search', ['as' => 'app.search.index', 'uses' => 'InhabitantsSearchController@index']);
